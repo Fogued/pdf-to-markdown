@@ -1,12 +1,14 @@
 # PDF to Markdown (Marker + Google Colab)
 
+[![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Fogued/pdf-to-markdown/blob/main/PDF_to_Markdown.ipynb)
+
 Cuaderno de Google Colab que convierte PDF, imágenes, DOCX, PPTX, XLSX, HTML y EPUB a Markdown, HTML o JSON con [Marker](https://github.com/VikParuchuri/marker). Puede usar la API gratuita de NVIDIA como LLM para mejorar tablas, fórmulas y texto.
 
 Con salida en Markdown, el resultado se descarga en un ZIP listo para descomprimir en un vault de [Obsidian](https://obsidian.md): una carpeta por documento, con las imágenes en `images/` y las fórmulas en `$...$` y `$$...$$`.
 
 ## Uso
 
-1. Abre [`PDF_to_Markdown.ipynb`](PDF_to_Markdown.ipynb) en Google Colab (*Archivo → Abrir cuaderno → GitHub* y pega la URL de este repositorio).
+1. Abre el cuaderno en Google Colab con el botón *Open in Colab* de arriba.
 2. Activa la GPU: *Entorno de ejecución → Cambiar tipo de entorno → GPU T4*.
 3. Ejecuta las celdas en orden:
    1. Comprobar la GPU.
