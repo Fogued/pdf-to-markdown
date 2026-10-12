@@ -4,7 +4,7 @@
 
 A Google Colab notebook that converts PDF, images, DOCX, PPTX, XLSX, HTML and EPUB to Markdown, HTML or JSON with [Marker](https://github.com/VikParuchuri/marker). It can use NVIDIA's free API as an LLM to improve tables, equations and text.
 
-With Markdown output, the result is downloaded as a ZIP ready to unzip into an [Obsidian](https://obsidian.md) vault: one folder per document, with images in `images/` and equations as `$...$` and `$$...$$`.
+With Markdown output, the result is downloaded as a ZIP ready to unzip into an [Obsidian](https://obsidian.md) vault: one folder per document, with images in `images/` and equations as `$...$` and `$$...$$`. Each image file is prefixed with the document name (`name_page_0_Figure_1.jpeg`), so `images/` folders from different documents can be merged into one folder without overwriting each other.
 
 ## Usage
 
