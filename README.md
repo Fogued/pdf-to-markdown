@@ -42,10 +42,10 @@ Only needed with `USE_LLM = True`. Get one for free at [build.nvidia.com](https:
 
 `Slides_to_Markdown.ipynb` is a lighter notebook for lecture slides (for example LaTeX Beamer decks) that already contain text. It reads the PDF's own text layer with PyMuPDF, so it needs no GPU, no API key and no vision LLM. A batch of 3-4 decks of about 20 pages converts in under a minute.
 
-The output is one `.md` file per deck:
-- YAML front-matter at the top, followed by `## Slide N: Title` sections.
+The output of one upload is a single `.md` file plus one `images/` folder:
+- YAML front-matter at the top, then every PDF's `## Slide N: Title` sections, in filename order.
 - Nested bullets, tables and links, plus LaTeX math (`$...$`).
-- Each figure saved as a PNG with a caption placeholder and the labels found on it.
+- Every figure saved in that shared `images/` folder, with a caption placeholder and the labels found on it. Links look like `images/<deck>_slideNN_figK.png`.
 
 The following are removed:
 - Repeated headers, footers and logos.
@@ -54,7 +54,7 @@ The following are removed:
 
 Formulas are converted from the math fonts. The small [pix2tex](https://github.com/lukas-blecher/LaTeX-OCR) model is only used for 2-D formulas (fractions, sums), and its result is kept only when it matches the symbols in the PDF.
 
-Upload PDFs or a `.zip`, or set `DRIVE_INPUT_FOLDER` to read them from Google Drive. Results download as one ZIP: `<deck>/<deck>.md` with `<deck>/images/`. Scanned PDFs without a text layer are not supported; use the Marker notebook for those.
+Upload PDFs or a `.zip`, or set `DRIVE_INPUT_FOLDER` to read them from Google Drive. Set `OUTPUT_NAME` to choose the Markdown filename (for example `lecture1_intro`); leave it empty to use the shared start of the PDF names. Results download as one ZIP: `<name>.md` next to `images/`. Scanned PDFs without a text layer are not supported; use the Marker notebook for those.
 
 ## Why Marker 1.10.2
 
