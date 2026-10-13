@@ -36,6 +36,26 @@ In step 5 you choose the mode: select one file to convert just that one, or seve
 
 Only needed with `USE_LLM = True`. Get one for free at [build.nvidia.com](https://build.nvidia.com) (it starts with `nvapi-`). You can store it as a Colab secret named `NVIDIA_API_KEY` (key icon in the sidebar) or paste it when the notebook asks. The key is never saved in the notebook.
 
+## Slides to Markdown (no LLM)
+
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Fogued/pdf-to-markdown/blob/main/Slides_to_Markdown.ipynb)
+
+`Slides_to_Markdown.ipynb` is a lighter notebook for lecture slides (for example LaTeX Beamer decks) that already contain text. It reads the PDF's own text layer with PyMuPDF, so it needs no GPU, no API key and no vision LLM. A batch of 3-4 decks of about 20 pages converts in under a minute.
+
+The output is one `.md` file per deck:
+- YAML front-matter at the top, followed by `## Slide N: Title` sections.
+- Nested bullets, tables and links, plus LaTeX math (`$...$`).
+- Each figure saved as a PNG with a caption placeholder and the labels found on it.
+
+The following are removed:
+- Repeated headers, footers and logos.
+- Incremental "build" slides, which are collapsed into their final step.
+- The hidden OCR layer of OCR'd PDFs. It is only used to recover text inside pictures.
+
+Formulas are converted from the math fonts. The small [pix2tex](https://github.com/lukas-blecher/LaTeX-OCR) model is only used for 2-D formulas (fractions, sums), and its result is kept only when it matches the symbols in the PDF.
+
+Upload PDFs or a `.zip`, or set `DRIVE_INPUT_FOLDER` to read them from Google Drive. Results download as one ZIP: `<deck>/<deck>.md` with `<deck>/images/`. Scanned PDFs without a text layer are not supported; use the Marker notebook for those.
+
 ## Why Marker 1.10.2
 
 Marker 2.x needs Docker (vLLM) or llama.cpp for its layout models, which are not available in Colab, and fails with `docker binary not found`.
